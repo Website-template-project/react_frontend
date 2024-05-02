@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import styles from './header.module.scss';
 import { Link, NavLink } from 'react-router-dom';
-
+import Logo from '../../assets/vite.svg'
 export interface HeaderProps {
     className?: string;
 }
@@ -13,13 +13,13 @@ export interface HeaderProps {
 export const Header = ({ className }: HeaderProps) => {
     return (
         <div className={classNames(styles.root, className)}>
-            <a href="/">Logo</a>
+            <img src={Logo}/>
             <div className={styles.menu}>
                 <NavLink
                     to="/"
                     className={({ isActive }) => classNames({ [styles.active]: isActive })}
                 >
-                    Home
+                    Sign in
                 </NavLink>
                 <NavLink
                     to="/about"

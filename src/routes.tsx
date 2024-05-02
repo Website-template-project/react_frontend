@@ -1,7 +1,7 @@
 import { RouteObject } from 'react-router-dom';
 import { SiteWrapper } from './components/site-wrapper/site-wrapper';
 import { HomePage } from './components/home-page/home-page';
-import { About } from './components/about/about';
+import { About } from './components/about/About.1';
 
 export const routes: RouteObject[] = [
     {
