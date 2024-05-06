@@ -8,9 +8,6 @@ import { AboutProps } from './about';
  */
 
 export const About = ({ className }: AboutProps) => {
-    const response = fetch("http://127.0.0.1:8000/api/products/", {
-        method: 'GET'
-    });
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles.text}>

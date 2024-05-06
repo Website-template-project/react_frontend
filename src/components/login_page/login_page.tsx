@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import styles from './login_page.module.scss';
 import { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
-
+import backgroundImage from '../../assets/9076027.jpg'
 export interface LoginProps {
     className?: string;
 }
@@ -17,17 +17,16 @@ export const Login = ({ className }: LoginProps) => {
     const registerClicked = () => {};
     return (
         <div className={classNames(styles.LoginBox, className)}>
-            <header className={classNames(styles.loginheader, className, styles.LoginBox)}>
-                {isLoginView ? <h1></h1> : <h1>Register</h1>}
+            <header className={classNames(styles.Loginheader, className)}>
+                {isLoginView ? <h1>Login</h1> : <h1>Register</h1>}
             </header>
-            Login
             <div className="login-container">
                 <label htmlFor="username">Username</label>
                 <br />
                 <input
                     id="username"
                     type="text"
-                    placeholder="username"
+                    placeholder="Username"
                     value={username}
                     onChange={(evt) => setUsername(evt.target.value)}
                 />
@@ -37,17 +36,19 @@ export const Login = ({ className }: LoginProps) => {
                 <input
                     id="password"
                     type="password"
-                    placeholder="Description"
+                    placeholder="Password"
                     value={password}
                     onChange={(evt) => setPassword(evt.target.value)}
                 />
                 <br />
                 {isLoginView ? (
-                    <button onClick={loginClicked} disabled={isDisabled}>
+                    <button className={classNames(styles.LoginButton, className)} 
+                    onClick={loginClicked} disabled={isDisabled}>
                         Login
                     </button>
                 ) : (
-                    <button onClick={registerClicked} disabled={isDisabled}>
+                    <button className={classNames(styles.LoginButton, className)}
+                    onClick={registerClicked} disabled={isDisabled}>
                         Register
                     </button>
                 )}
@@ -57,7 +58,7 @@ export const Login = ({ className }: LoginProps) => {
                     </p>
                 ) : (
                     <p onClick={() => setIsLoginView(true)}>
-                        You already have an account? Login here
+                        You already have an account? Login here!
                     </p>
                 )}
             </div>
