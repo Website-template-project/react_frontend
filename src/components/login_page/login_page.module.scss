@@ -1,0 +1,26 @@
+@import '@styles/theme.module.scss';
+
+.LoginBox {
+    //margin: 0 auto;
+    //width: fit-content;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    //justify-content: center;
+    //display: flex;
+    //align-items: center;
+    flex-direction: column; /* Arrange items vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    background-color: rgba(211, 211, 211, 0.62);
+    box-shadow: 3px 3px 3px rgb(0, 0, 0);
+    font-family: $my-prettyfont;
+    text-align: start;
+    overflow: hidden;
+    display: flex;
+    padding: 1.5rem;
+}
+.loginheader{
+    padding: 0;
+}

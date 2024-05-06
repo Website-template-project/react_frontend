@@ -13,10 +13,12 @@ export interface HeaderProps {
 export const Header = ({ className }: HeaderProps) => {
     return (
         <div className={classNames(styles.root, className)}>
-            <img src={Logo}/>
+            <NavLink to="/">
+                <img src={Logo}/>
+            </NavLink>
             <div className={styles.menu}>
                 <NavLink
-                    to="/"
+                    to="/login"
                     className={({ isActive }) => classNames({ [styles.active]: isActive })}
                 >
                     Sign in
