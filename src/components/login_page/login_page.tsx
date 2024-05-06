@@ -2,7 +2,8 @@ import classNames from 'classnames';
 import styles from './login_page.module.scss';
 import { useState, useEffect } from 'react';
 import { useCookies } from 'react-cookie';
-import backgroundImage from '../../assets/9076027.jpg'
+import backgroundImage from '../../assets/6106991.jpg'
+
 export interface LoginProps {
     className?: string;
 }
@@ -16,6 +17,7 @@ export const Login = ({ className }: LoginProps) => {
     const loginClicked = () => {};
     const registerClicked = () => {};
     return (
+    <body style={{ backgroundImage: `url(${backgroundImage})` }}>
         <div className={classNames(styles.LoginBox, className)}>
             <header className={classNames(styles.Loginheader, className)}>
                 {isLoginView ? <h1>Login</h1> : <h1>Register</h1>}
@@ -63,5 +65,6 @@ export const Login = ({ className }: LoginProps) => {
                 )}
             </div>
         </div>
+    </body>
     );
 };
