@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+    web:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile
+        volumes:
+            - ./src:/app/src
+            - ./public:/app/public
+            - ./.env:/app/.env
+            - ./.env.production:/app/.env.production
+        ports:
+            - "3000:80"
+        networks:
+            - app-network
+    backend:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        expose:
+            - "8000"
+        environment:
+            - DJANGO_SETTINGS_MODULE=backend.settings
+            - COSMOS_DB_NAME=dangkhoa
+            - COSMOS_DB_HOST=mongodb+srv://<user>:<password>@dangkhoa.mongocluster.cosmos.azure.com/?tls=true&authMechanism=SCRAM-SHA-256&retrywrites=false&maxIdleTimeMS=120000',  # Example: 'mongodb://username:password@hostname:port/?ssl=true&replicaSet=globaldb&retrywrites=false
+            - COSMOS_DB_USERNAME=dangkhoa
+            - COSMOS_DB_PASSWORD=ititrg17001!
+        networks:
+            - app-network
+    nginx:
+        image: nginx:latest
+        volumes:
+            - ./config/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+            - /etc/letsencrypt:/etc/letsencrypt
+        ports:
+            - "80:80"
+            - "443:443"
+        depends_on:
+            - backend
+        networks:
+            - app-network
+networks:
+    app-network:
