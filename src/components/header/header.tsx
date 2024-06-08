@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import styles from './header.module.scss';
 import { Link, NavLink } from 'react-router-dom';
 import Logo from '../../assets/vite.svg'
+import { Lang } from './lang';
 export interface HeaderProps {
     className?: string;
 }
@@ -12,24 +13,25 @@ export interface HeaderProps {
  */
 export const Header = ({ className }: HeaderProps) => {
     return (
-        <div className={classNames(styles.root, className)}>
-            <NavLink to="/">
-                <img src={Logo}/>
-            </NavLink>
-            <div className={styles.menu}>
-                <NavLink
-                    to="/login"
-                    className={({ isActive }) => classNames({ [styles.active]: isActive })}
-                >
-                    Sign in
+            <div className={classNames(styles.root, className)}>
+                <NavLink to="/">
+                  <img src={Logo}/>
                 </NavLink>
-                <NavLink
-                    to="/about"
-                    className={({ isActive }) => classNames({ [styles.active]: isActive })}
-                >
-                    About
-                </NavLink>
+                <div className={styles.menu}>
+                    <Lang/>
+                    <NavLink
+                        to="/about"
+                        className={({ isActive }) => classNames({ [styles.active]: isActive })}
+                    >
+                        About
+                    </NavLink>                
+                    <NavLink
+                        to="/login"
+                        className={({ isActive }) => classNames({ [styles.active]: isActive })}
+                    >
+                        Sign in
+                    </NavLink>
+                </div>
             </div>
-        </div>
     );
 };

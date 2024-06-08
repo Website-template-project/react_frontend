@@ -7,6 +7,10 @@ export default createBoard({
     Board: () => (
         <ComponentWrapper>
             <Header />
+            <div>
+                <li>Item</li>
+                <li>Item</li>
+            </div>
         </ComponentWrapper>
     ),
     isSnippet: true,
@@ -16,5 +20,7 @@ export default createBoard({
             right: 0,
             left: 0,
         },
+        windowWidth: 1920,
+        windowHeight: 1080,
     },
 });

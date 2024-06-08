@@ -5,4 +5,8 @@ export default createBoard({
     name: 'Login',
     Board: () => <Login />,
     isSnippet: true,
+    environmentProps: {
+        windowWidth: 1920,
+        windowHeight: 1080,
+    },
 });

@@ -3,6 +3,7 @@ import { SiteWrapper } from './components/site-wrapper/site-wrapper';
 import { HomePage } from './components/home-page/home-page';
 import { About } from './components/about/About.1';
 import { Login }from './components/login_page/login_page';
+import {Lang} from './components/lang/lang-page';
 
 export const routes: RouteObject[] = [
     {
@@ -11,7 +12,8 @@ export const routes: RouteObject[] = [
         children: [
             { index: true, element: <HomePage /> },
             { path: 'about', element: <About /> },
-            { path: 'login', element: <Login />}
+            { path: 'login', element: <Login />},
+            { path: 'lang', element: <Lang />},
         ],
     },
 ];
