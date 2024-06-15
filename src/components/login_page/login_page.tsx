@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import styles from './login_page.module.scss';
 import { useState, useEffect,useContext } from 'react';
-import { useCookies } from 'react-cookie';
 import backgroundImage from '../../assets/6106991.jpg';
 import {context} from '../../mycontext';
 import { useNavigate } from "react-router-dom";
@@ -18,7 +17,7 @@ export const Login = ({ className }: LoginProps) => {
     const [isMouseHover,setIsMouseHover] = useState(false);
     const handleMouseIn = ()=>{setIsMouseHover(true)};
     const handleMouseOut = ()=>{setIsMouseHover(false)};
-
+    const navigate = useNavigate();
     const isDisabled = username.length === 0 || password.length === 0;
     const loginClicked = () => {
         loggingIn(username,password);
@@ -26,6 +25,11 @@ export const Login = ({ className }: LoginProps) => {
     const registerClicked = () => {
         createUser(username,password);
     };
+    useEffect(()=>{
+        if(Object.keys(user).length !== 0){
+            navigate('/user');
+        }
+    },[user])
     return (
         <body style={{ backgroundImage: `url(${backgroundImage})` }}>
             { loading?

@@ -25,12 +25,12 @@ export const Header = ({ className }: HeaderProps) => {
                   <img src={Logo}/>
                 </NavLink>
                 <div className={styles.menu}>
-                <NavLink
-                    to="/lang"
-                    className={({ isActive }) => classNames({ [styles.active]: isActive })}
-                >
-                    {beautifyCode(lang)}
-                </NavLink>
+                    <NavLink
+                        to="/lang"
+                        className={({ isActive }) => classNames({ [styles.active]: isActive })}
+                    >
+                        {beautifyCode(lang)}
+                    </NavLink>
                     <NavLink
                         to="/about"
                         className={({ isActive }) => classNames({ [styles.active]: isActive })}

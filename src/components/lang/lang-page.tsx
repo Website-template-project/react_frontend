@@ -34,25 +34,15 @@ export const Lang = ({ className }: LangProps) => {
         }
         fetchData();
     },[]);
-    useEffect(()=>{
-        fetch(
-            api + '/api/lang/',
-        {
-            method:'POST',
-            headers:{
-                'Accept-Language':'${lang}',
-            }
-        });
-
-    },[lang]);
 
     return (
-        <div>
+        <div className={classNames(styles.root, className)}>
+            <div className={classNames(styles['grid-container'],className)}>Set the language</div>
             {loading ? 
                 <ReactLoading type = "spinningBubbles" color = "#007bff" height = {'20%'} width = {'20%'}/>:
                 data.map((language)=>{
                     return(
-                    <button onClick = {()=>{setLang(language)}} id = {language}>
+                    <button className={classNames(styles['grid-item'],className)} onClick = {()=>{setLang(language)}} id = {language}>
                         {beautifyCode(language)}
                     </button>
                     );

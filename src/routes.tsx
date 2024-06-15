@@ -4,6 +4,7 @@ import { HomePage } from './components/home-page/home-page';
 import { About } from './components/about/About.1';
 import { Login }from './components/login_page/login_page';
 import {Lang} from './components/lang/lang-page';
+import {User} from './components/user_page/user_page';
 
 export const routes: RouteObject[] = [
     {
@@ -14,6 +15,7 @@ export const routes: RouteObject[] = [
             { path: 'about', element: <About /> },
             { path: 'login', element: <Login />},
             { path: 'lang', element: <Lang />},
+            { path: 'user', element: <User />},
         ],
     },
 ];

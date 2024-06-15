@@ -23,7 +23,9 @@ const ContextProvider = ({ children }) => {
     const [error,setError] = useState(false);
     const [loading,setLoading] = useState(true);
     const api = import .meta.env.VITE_APP_API_URL;
-
+    const loggingOut = ()=>{
+        setToken('');
+    };
     useEffect(() => {
         const fetchData = async ()=>{
             const headers = {
@@ -109,7 +111,7 @@ const ContextProvider = ({ children }) => {
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light');
     };
-    const value = {theme,lang,webFields,user,error,loading,toggleTheme,setLang,setError,setLoading,createUser,loggingIn};
+    const value = {theme,lang,webFields,user,error,loading,toggleTheme,setLang,setError,setLoading,createUser,loggingIn,loggingOut};
     return (
         <context.Provider value={value}>{children}</context.Provider>
     );
