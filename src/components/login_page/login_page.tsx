@@ -1,34 +1,39 @@
 import classNames from 'classnames';
 import styles from './login_page.module.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext } from 'react';
 import { useCookies } from 'react-cookie';
-import backgroundImage from '../../assets/6106991.jpg'
+import backgroundImage from '../../assets/6106991.jpg';
+import {context} from '../../mycontext';
 import { useNavigate } from "react-router-dom";
+import ReactLoading from 'react-loading';
 
 export interface LoginProps {
     className?: string;
 }
 export const Login = ({ className }: LoginProps) => {
+    const {theme,lang,webFields,user,error,loading,toggleTheme,setLang,setError,setLoading,createUser,loggingIn} = useContext(context);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isLoginView, setIsLoginView] = useState(true);
     const [isMouseHover,setIsMouseHover] = useState(false);
-    const [token, setToken, removeToken] = useCookies(['Cookies']);
     const handleMouseIn = ()=>{setIsMouseHover(true)};
     const handleMouseOut = ()=>{setIsMouseHover(false)};
 
     const isDisabled = username.length === 0 || password.length === 0;
-    useEffect(() => {
-        //
-;    }, [token]);
-    const loginClicked = () => {};
-    const registerClicked = () => {};
+    const loginClicked = () => {
+        loggingIn(username,password);
+    };
+    const registerClicked = () => {
+        createUser(username,password);
+    };
     return (
-    <body style={{ backgroundImage: `url(${backgroundImage})` }}>
-        <div className={classNames(styles.LoginBox, className)}>
-            <header className={classNames(styles.Loginheader, className)}>
-                {isLoginView ? <h1>Login</h1> : <h1>Register</h1>}
-            </header>
+        <body style={{ backgroundImage: `url(${backgroundImage})` }}>
+            { loading?
+            <ReactLoading type = "spinningBubbles" color = "#007bff" height = {'20%'} width = {'20%'}/>:
+            <div className={classNames(styles.LoginBox, className)}>
+                <header className={classNames(styles.Loginheader, className)}>
+                   {isLoginView ? <h1>Login</h1> : <h1>Register</h1>}
+                </header>
             <div className="login-container">
                 <label htmlFor="username">Username</label>
                 <br />
@@ -74,8 +79,14 @@ export const Login = ({ className }: LoginProps) => {
                         You already have an account? Login here!
                     </p>
                 )}
+                {error?(
+                    <p style={{color:'red'}}>Process fail</p>
+                ):(
+                    <p></p>
+                )}
+                </div>
             </div>
-        </div>
-    </body>
+            }
+        </body>
     );
 };
