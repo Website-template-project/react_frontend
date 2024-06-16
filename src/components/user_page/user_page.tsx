@@ -10,7 +10,7 @@ export interface UserProps {
 export const User = ({ className }: UserProps) => {
     const {theme,lang,webFields,user,error,loading,toggleTheme,setLang,setError,setLoading,createUser,loggingIn,loggingOut} = useContext(context);
     const navigate = useNavigate();
-    const array = [];
+    const array:any[] = [];
     useEffect(()=>{
             if(Object.keys(user).length === 0){
                 navigate('/login');

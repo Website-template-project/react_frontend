@@ -24,8 +24,8 @@ export const Lang = ({ className }: LangProps) => {
                 const result = await response.json();
                 setData(result.data);
             }
-            catch{(error)=>{
-                setError(error);
+            catch{(error:any)=>{
+                setError(true);
             }
             }
             finally{
