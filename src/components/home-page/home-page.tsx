@@ -1,6 +1,9 @@
 import classNames from 'classnames';
 import styles from './home-page.module.scss';
 
+import React, { useEffect, useState } from 'react';
+import { quotes } from '../quotes'; // Adjust the path as needed
+
 export interface HomePageProps {
     className?: string;
 }
@@ -9,14 +12,21 @@ export interface HomePageProps {
  * This component was created using Codux's Default new component template.
  * To create custom component templates, see https://help.codux.com/kb/en/article/kb16522
  */
-export const HomePage = ({ className }: HomePageProps) => {
+export const HomePage: React.FC<HomePageProps> = ({ className }) => {
+    const [quote, setQuote] = useState<string>('');
+
+    useEffect(() => {
+        // Generate a random number between 1 and 365
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        // Set the quote based on the random index
+        setQuote(quotes[randomIndex]);
+    }, []);
+
     return (
         <div className={classNames(styles.root, className)}>
             <div className={styles.title}>Welcome to Scienghub</div>
             <div className={styles.paragraph}>
-                <div className={styles.text}>
-                    Our one hub for everything engineering
-                </div>
+                <div className={styles.text}>{quote}</div>
             </div>
             <button className={styles.button}>Learn more</button>
             <img
